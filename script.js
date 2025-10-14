@@ -1,4 +1,3 @@
-
 const actions = ["rock", "paper", "scissors"];
 
 function getComputerChoice() {
@@ -11,4 +10,8 @@ function getComputerChoice() {
   return actions[randomChoice]
 }
 
-console.log(getComputerChoice())
+function getHumanChoice() {
+  let humanChoice = prompt("rock, paper, scissors: ");
+  return humanChoice.toLowerCase()
+}
+
