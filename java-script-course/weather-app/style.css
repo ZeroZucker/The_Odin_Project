@@ -1,0 +1,10 @@
+
+.bar-content {
+  text-align:center;
+}
+
+.top-section {
+  display: flex;
+  backgroud-color: black;
+  justify-content: center;
+}

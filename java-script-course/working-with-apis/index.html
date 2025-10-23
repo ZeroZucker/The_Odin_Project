@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>GIF searcher</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="topSection">
+      <form id="searchForm">
+        <input type="search" id="search" placeholder="Search for GIF">
+        <button type="submit">Search</button>
+      </form>
+    <img src="#">
+    <script>
+       const api_key = "pPybUvJ7rzzyKUHx2BJI8vlMQZJNEsOt"
+       const img = document.querySelector('img');
+       const form = document.querySelector("#searchForm");
+       const searchInput = document.querySelector("#search");
+
+       form.addEventListener("submit", (event) => {
+          event.preventDefault();
+          const searchTerm = searchInput.value.trim();
+          console.log(searchTerm);
+          replaceGIF(searchTerm);
+          });
+
+        async function replaceGIF(searchTerm) {
+         const url = `https://api.giphy.com/v1/gifs/translate?api_key=${api_key}&s=${searchTerm}`;
+         try {
+           const response = await fetch(url);
+           if (!response.ok) {
+              throw new Error(`response status: ${response.status}`);
+            }
+          let searchData = await response.json();
+          img.src = searchData.data.images.original.url;
+
+         } catch(error) {
+           console.error(error.message);
+         }
+       }
+       </script>
+    </div>
+  </body>
+
+</html>
